@@ -1,0 +1,150 @@
+1. What is an Emmet?
+    -> “Emmet is a plug in for many popular text editors which greatly improves HTML & CSS workflow:”
+
+2. What is the difference between a library and a framework?
+    -> The fundamental difference between a library and a framework lies in the inversion of control.
+    Library:
+    . A library is a collection of pre-written code that performs specific, well-defined tasks. When using a library, the developer retains control over the application's flow and explicitly calls the library's functions or methods as needed to achieve a desired outcome. The developer decides when and how to use the library's components within their own code. Examples include jQuery for DOM manipulation or Lodash for utility functions.
+    Framework:
+    . A framework provides a structured environment or a skeleton for building applications. It dictates the overall architecture and flow of the application, often providing a set of conventions and rules that the developer must adhere to. The framework essentially "calls" the developer's code at specific points, rather than the other way around. This "inversion of control" means the framework controls the application's flow, and the developer fills in the "blanks" or implements specific functionalities within the framework's structure. Examples include Angular, React (often used as a framework due to its component-based structure and ecosystem), or Ruby on Rails.
+        In summary:
+        You call the library; the framework calls you.
+        Libraries offer flexibility and focus on specific functionalities, while frameworks provide a complete structure for application development, often with built-in conventions and tools.
+
+3. What is CDN? Why do we use it?
+    -> A CDN, or Content Delivery Network, is a geographically distributed group of servers that caches and delivers content to users based on their location, improving website speed and performance. CDNs are used to reduce latency, enhance user experience, and improve website reliability. 
+    Here's a more detailed explanation:
+    What is a CDN?
+    A CDN is a network of servers strategically placed around the world. These servers store copies of your website's content, like images, videos, and other static files. When a user requests content from your website, the CDN delivers the content from the server closest to their location, rather than from the original server. 
+    Why use a CDN?
+    Improved speed and performance:
+    By delivering content from a nearby server, CDNs reduce the distance data needs to travel, resulting in faster loading times and a smoother user experience. 
+    Reduced latency:
+    Latency, or the delay in data transmission, is minimized because the content is served from a geographically closer location. 
+    Increased reliability:
+    CDNs distribute content across multiple servers. If one server goes down, another server can take over, ensuring your website remains accessible. 
+    Reduced bandwidth consumption:
+    By caching content on edge servers, CDNs reduce the load on the origin server, which can lower bandwidth costs. 
+    Enhanced security:
+    CDNs can provide an extra layer of security by mitigating DDoS attacks and other threats. 
+    Improved user experience:
+    Faster loading times, reduced latency, and increased reliability lead to a better overall user experience, which can translate to increased engagement and conversions. 
+    Scalability:
+    CDNs can easily handle traffic spikes, ensuring your website remains accessible even during peak usage. 
+    In essence, CDNs are crucial for delivering content quickly and reliably to a global audience, especially in today's fast-paced digital environment where speed and performance are paramount. 
+
+4. Why is React known as React?
+    -> React is named "React" because of its fundamental principle of reactivity in building user interfaces. The name reflects how the library efficiently reacts to changes in data and state, automatically updating the relevant parts of the user interface without requiring a full page reload.
+    This "reactive" behavior is achieved through key features:
+    Virtual DOM:
+    React uses a virtual representation of the Document Object Model (DOM). When data changes, React calculates the differences between the current virtual DOM and the new one, and then efficiently updates only the necessary elements in the actual browser DOM. This targeted updating is a core aspect of its "reactivity."
+    Component-based Architecture:
+    React applications are built from independent, reusable components. These components are designed to "react" and re-render themselves when their internal state or external properties (props) change, ensuring that the UI reflects the latest data.
+    Efficient Updates:
+    The library's design focuses on providing a performant way to build dynamic UIs where changes in data trigger precise and efficient updates to the displayed content. This responsiveness to data changes is central to the "React" name.
+
+5. What is crossorigin in script tag?
+    -> The crossorigin attribute in an HTML <script> tag specifies how to handle requests for external scripts, particularly regarding credentials and error reporting. In short, it allows scripts from a third-party domain to be treated with proper security protocols, enabling your browser to access detailed error information from them.
+
+    The Problem: "Script Error"
+    By default, web browsers follow a security rule called the same-origin policy. This policy prevents a script on your website (e.g., your-site.com) from accessing resources on another domain (e.g., a-cdn.com) in a way that could expose sensitive information.
+
+    When an error occurs in a script loaded from a different origin (like a Content Delivery Network or CDN) without the crossorigin attribute, the browser intentionally hides the details to prevent potential data leakage. Instead of a useful message like Uncaught TypeError: Cannot read properties of null, you'll only see a generic and unhelpful "Script error." 😠
+
+    This makes debugging extremely difficult because you have no information about what went wrong or where.
+
+    The Solution: The crossorigin Attribute
+    Adding the crossorigin attribute to your <script> tag tells the browser to request the file using Cross-Origin Resource Sharing (CORS). This is a mechanism that lets a server indicate which origins (other than its own) are permitted to read information from it.
+
+    When you use this attribute, two things happen:
+
+    The Browser: The browser sends an Origin header with the request, telling the server where the request is coming from.
+
+    The Server: If the server is configured to allow requests from your origin, it will respond with a special header, Access-Control-Allow-Origin.
+
+    If this "handshake" is successful, the browser knows it's safe to expose detailed error information from that script to your page's console.
+
+6.  What is diference between React and ReactDOM?
+    -> The core difference is that React is a library for creating and defining user interface components, while ReactDOM is a library for actually rendering those components into the web browser's DOM.
+
+    Think of it like this:
+
+    React: The architect who designs the blueprint of a house (what it looks like, how the rooms connect).
+
+    ReactDOM: The construction crew that takes the blueprint and builds the physical house on the land (the webpage).
+
+    Let's break that down.
+
+    What is React? (react package)
+    React is the core library that provides the features to build your UI. Its main responsibilities are:
+
+    Component Creation: It gives you the ability to create reusable UI components (e.g., a Button, a UserProfile, a NavigationBar).
+
+    State and Props: It manages the data within your components (state) and the data passed between them (props).
+
+    Lifecycle Methods / Hooks: It provides hooks like useState and useEffect to manage a component's behavior over time (e.g., fetching data when it first appears).
+
+    The Virtual DOM: React creates an in-memory representation of the UI, called the Virtual DOM. When a component's state changes, React creates a new Virtual DOM, compares it to the old one ("diffing"), and figures out the most efficient way to update the actual UI.
+
+    Crucially, React itself doesn't know how to talk to the browser. It's a platform-agnostic library. Its job is only to create a "description" of what the UI should look like.
+
+
+    What is ReactDOM? (react-dom package)
+    ReactDOM is the renderer for React on the web. It serves as the bridge between the components you defined with React and the browser's Document Object Model (DOM).
+
+
+    Its main responsibility is a single, vital command: take the components defined with React and render them into a specific HTML element on a webpage.
+
+    The most common method you'll use from this library is ReactDOM.createRoot(rootElement).render(<App />). This command says:
+    "Take the <App> component (and all its children), and render it inside the HTML element with the ID root."
+
+    Why Were They Separated?
+    Initially, React and ReactDOM were part of a single library. They were split apart in React v0.14 (in 2015) to support other platforms.
+
+    This separation is the key to React's "learn once, write anywhere" philosophy. The logic of your components (written with React) can be reused, and you can simply plug in a different renderer for a different platform.
+
+    The most famous example is React Native.
+
+    React: You still use React to define your components (<View>, <Text>).
+
+    React Native Renderer: Instead of ReactDOM, you use the React Native renderer, which translates your components into native iOS and Android UI elements (like UIView and android.widget.TextView), not HTML <div>s.
+
+    This allows you to share UI logic between your web app, your iOS app, and your Android app.
+
+7. What is difference between react.development.js and react.production.js files via CDN?
+    -> The key difference is that react.development.js is for building and debugging your application, while react.production.js is the optimized version for your live website that users interact with.
+
+    You should never use the development version on your final website.
+
+    Development Version (react.development.js)
+    This version is your best friend while you're coding. 🧑‍💻
+
+    Purpose: To be used during the development phase of a project.
+
+    Code: The code is unminified, meaning it's readable and includes comments. This makes it easy to trace errors back to the original source code.
+
+    Features: It's packed with helpful warnings and detailed error messages. For instance, it will warn you in the browser console about common mistakes, potential bugs, or deprecated practices.
+
+    Performance: It's significantly larger and runs slower because of all the extra checks and warnings.
+
+    Production Version (react.production.js)
+    This version is what you put on your live server for your users. 🚀
+
+    Purpose: To be served to the end-users of your live application.
+
+    Code: The code is minified and uglified. All whitespace, comments, and long variable names are removed, and the code is condensed into a single line. This makes it unreadable to humans but highly efficient for browsers to download and parse.
+
+    Features: All the development-only warnings and error-checking logic are completely stripped out to save space and processing time.
+
+    Performance: It's much smaller in file size and runs significantly faster, providing a better user experience.
+
+8.  What is async and defer? - see my Youtube video?
+    -> Async and defer are boolean attributes which are used along with script tags to load external scripts efficiently in our webpage. 
+
+    Async -> html parsing -> scripts are fetched from the server in parallel -> scripts are executed and html parsing is paused -> After the scripts are completed executiong html parsing resumes.
+
+    Does not guarantee the order of execution. 
+
+    Defer -> HTML Parsing -> Script Fetch Parallely -> HTML Parsing Completed -> Scripts Execution Begins and is completed. 
+    Guarantees the order of execution. 
+

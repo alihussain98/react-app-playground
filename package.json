@@ -1,0 +1,30 @@
+{
+  "name": "reactproject",
+  "version": "1.0.0",
+  "description": "This is a react app, created by Ali hussain. ",
+  "keywords": [],
+  "homepage": "https://github.com/alihussain98/react-app-playground#readme",
+  "bugs": {
+    "url": "https://github.com/alihussain98/react-app-playground/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alihussain98/react-app-playground.git"
+  },
+  "license": "ISC",
+  "author": "Ali Hussain",
+  "type": "commonjs",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "parcel": "^2.15.4"
+  },
+  "dependencies": {
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "browserslist": [
+    "last 2 versions"
+  ]
+}
